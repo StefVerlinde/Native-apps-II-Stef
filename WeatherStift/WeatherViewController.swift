@@ -14,9 +14,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var condLabel: UILabel!
     
+    private let weatherManager = WeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        weatherManager.fetchWeather(city: "Gent")
     }
 
 
