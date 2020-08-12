@@ -66,7 +66,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ar7-LP-T4w">
                             <connections>
-                                <action selector="addLocationButtonTapped:" destination="BYZ-38-t0r" id="OIp-zf-Xcl"/>
+                                <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" id="OIp-zf-Xcl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -74,7 +74,7 @@
                         <outlet property="condLabel" destination="vcB-gP-WQz" id="Qqh-yG-V3c"/>
                         <outlet property="conditionImageView" destination="qak-rX-TEk" id="Xus-oE-8cX"/>
                         <outlet property="tempLabel" destination="7db-iB-JQX" id="uBG-uN-dPV"/>
-                        <segue destination="J7H-4M-SNj" kind="presentation" id="5I1-OQ-j64"/>
+                        <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" id="5I1-OQ-j64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,13 +88,77 @@
                     <view key="view" contentMode="scaleToFill" id="r8w-f8-7Jz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5je-u6-0wh">
+                                <rect key="frame" x="67" y="171.5" width="280" height="246"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lwY-9C-6AY">
+                                        <rect key="frame" x="24" y="24" width="232" height="198"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Fb-mb-MUO">
+                                                <rect key="frame" x="0.0" y="0.0" width="232" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-VM-Ab7">
+                                                <rect key="frame" x="0.0" y="37" width="232" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="4HT-NX-CxP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amv-1G-F8J">
+                                                <rect key="frame" x="0.0" y="89" width="232" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="kbJ-fg-iGy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="18"/>
+                                                <state key="normal" title="Search">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-dd-Sjn">
+                                                <rect key="frame" x="0.0" y="141" width="232" height="20"/>
+                                            </activityIndicatorView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCI-ez-JA1">
+                                                <rect key="frame" x="0.0" y="173" width="232" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lwY-9C-6AY" secondAttribute="bottom" constant="24" id="V2j-rd-vLD"/>
+                                    <constraint firstAttribute="trailing" secondItem="lwY-9C-6AY" secondAttribute="trailing" constant="24" id="aB7-fV-xBQ"/>
+                                    <constraint firstItem="lwY-9C-6AY" firstAttribute="top" secondItem="5je-u6-0wh" secondAttribute="top" constant="24" id="aVy-tP-pDZ"/>
+                                    <constraint firstItem="lwY-9C-6AY" firstAttribute="leading" secondItem="5je-u6-0wh" secondAttribute="leading" constant="24" id="hEu-iO-PPT"/>
+                                    <constraint firstAttribute="width" constant="280" id="tGk-oC-7XR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5je-u6-0wh" firstAttribute="centerY" secondItem="r8w-f8-7Jz" secondAttribute="centerY" multiplier="0.7" id="ANh-Bu-gvt"/>
+                            <constraint firstItem="5je-u6-0wh" firstAttribute="centerX" secondItem="r8w-f8-7Jz" secondAttribute="centerX" id="Zai-uf-Wg5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MGh-Kd-hw2"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vpA-8B-27M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2057" y="120"/>
+            <point key="canvasLocation" x="2056.521739130435" y="119.86607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhz-vD-vix">
