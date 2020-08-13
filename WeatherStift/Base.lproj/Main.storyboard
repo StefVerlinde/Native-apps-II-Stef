@@ -74,23 +74,23 @@
                         <outlet property="condLabel" destination="vcB-gP-WQz" id="Qqh-yG-V3c"/>
                         <outlet property="conditionImageView" destination="qak-rX-TEk" id="Xus-oE-8cX"/>
                         <outlet property="tempLabel" destination="7db-iB-JQX" id="uBG-uN-dPV"/>
-                        <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" id="5I1-OQ-j64"/>
+                        <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="5I1-OQ-j64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="119.86607142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Add City View Controller-->
         <scene sceneID="hcc-Wb-9Tg">
             <objects>
-                <viewController id="J7H-4M-SNj" sceneMemberID="viewController">
+                <viewController id="J7H-4M-SNj" customClass="AddCityViewController" customModule="WeatherStift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r8w-f8-7Jz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5je-u6-0wh">
-                                <rect key="frame" x="67" y="171.5" width="280" height="246"/>
+                                <rect key="frame" x="67" y="190.5" width="280" height="246"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lwY-9C-6AY">
                                         <rect key="frame" x="24" y="24" width="232" height="198"/>
