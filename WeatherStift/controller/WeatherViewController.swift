@@ -9,6 +9,10 @@
 import UIKit
 import SkeletonView
 
+protocol WeatherViewControllerDelegate: class {
+    func didUpdateWeatherFromSearch(model: WeatherModel)
+}
+
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var conditionImageView: UIImageView!
@@ -62,8 +66,24 @@ class WeatherViewController: UIViewController {
         performSegue(withIdentifier: "showAddCity", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAddCity" {
+            if let destination = segue.destination as? AddCityViewController {
+                destination.delegate = self
+            }
+        }
+    }
+    
     @IBAction func locationButtonTapped(_ sender: Any) {
-        
     }
 }
 
+extension WeatherViewController: WeatherViewControllerDelegate {
+    func didUpdateWeatherFromSearch(model: WeatherModel) {
+        presentedViewController?.dismiss(animated: true, completion: { [weak self] in
+            guard let this = self else {return}
+            print("\(model.countryName)")
+            this.updateView(with: model)
+        })
+    }
+}
