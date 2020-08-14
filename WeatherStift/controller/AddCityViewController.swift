@@ -14,6 +14,7 @@ class AddCityViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var statusLabel: UILabel!
     
+    private let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class AddCityViewController: UIViewController {
         guard let query = cityTextField.text, !query.isEmpty else {
             showSearchError(text: "City cannot be empty. Please try again!")
             return}
-        searchForCity(query: query)
+        handleSearch(query: query)
     }
     
     private func showSearchError(text: String){
@@ -57,8 +58,24 @@ class AddCityViewController: UIViewController {
         statusLabel.text = text
     }
     
-    private func searchForCity(query: String){
-        
+    private func handleSearch(query: String){
+        activityIndicator.startAnimating()
+        weatherManager.fetchWeather(byCity: query) { [weak self] (result) in
+            guard let this = self else {return}
+            this.activityIndicator.stopAnimating()
+            switch result {
+            case .success(let model):
+                this.handleSearchSuccess(model: model)
+            case .failure(let error):
+                this.showSearchError(text: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func handleSearchSuccess(model: WeatherModel) {
+        statusLabel.isHidden = false
+        statusLabel.textColor = .systemGreen
+        statusLabel.text = "Success!"
     }
 }
 
