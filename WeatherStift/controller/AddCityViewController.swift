@@ -43,6 +43,21 @@ class AddCityViewController: UIViewController {
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
+        statusLabel.isHidden = true
+        //guard to make sure it's not empty
+        guard let query = cityTextField.text, !query.isEmpty else {
+            showSearchError(text: "City cannot be empty. Please try again!")
+            return}
+        searchForCity(query: query)
+    }
+    
+    private func showSearchError(text: String){
+        statusLabel.isHidden = false
+        statusLabel.textColor = .systemRed
+        statusLabel.text = text
+    }
+    
+    private func searchForCity(query: String){
         
     }
 }
