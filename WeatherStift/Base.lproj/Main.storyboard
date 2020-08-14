@@ -74,7 +74,7 @@
                         <outlet property="condLabel" destination="vcB-gP-WQz" id="Qqh-yG-V3c"/>
                         <outlet property="conditionImageView" destination="qak-rX-TEk" id="Xus-oE-8cX"/>
                         <outlet property="tempLabel" destination="7db-iB-JQX" id="uBG-uN-dPV"/>
-                        <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="5I1-OQ-j64"/>
+                        <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" modalPresentationStyle="overFullScreen" id="5I1-OQ-j64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

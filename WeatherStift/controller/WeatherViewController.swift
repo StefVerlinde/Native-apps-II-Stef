@@ -25,23 +25,24 @@ class WeatherViewController: UIViewController {
     }
     
     private func fetchWeather(){
-        weatherManager.fetchWeather(byCity: "Destelbergen") { [weak self] (result) in
+        weatherManager.fetchWeather(byCity: "Gent") { [weak self] (result) in
             guard let this = self else {return}
             switch result {
-            case .success(let weatherData):
-                this.updateView(with: weatherData)
+            case .success(let model):
+                this.updateView(with: model)
             case .failure(let error):
                 print("error: \(error.localizedDescription)")
             }
         }
     }
     
-    private func updateView(with data: WeatherData){
+    private func updateView(with model: WeatherModel){
         hideAnimation()
         
-        tempLabel.text = data.main.temp.toString().appending("°C")
-        condLabel.text = data.weather.first?.description
-        navigationItem.title = data.name
+        tempLabel.text = model.temp.toString().appending("°C")
+        condLabel.text = model.conditionDescription
+        navigationItem.title = model.countryName
+        conditionImageView.image = UIImage(named: model.conditionImage)
     }
     
     private func hideAnimation(){
