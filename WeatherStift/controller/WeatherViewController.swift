@@ -30,19 +30,33 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAnimation()
-        fetchWeather()
+        fetchWeather(byCity: "Gent")
     }
     
-    private func fetchWeather(){
-        weatherManager.fetchWeather(byCity: "Gent") { [weak self] (result) in
+    private func fetchWeather(byLocation location: CLLocation) {
+        showAnimation()
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        weatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] (result) in
             guard let this = self else {return}
-            switch result {
-            case .success(let model):
-                this.updateView(with: model)
-            case .failure(let error):
-                print("error: \(error.localizedDescription)")
-            }
+            this.handleResult(result)
+        }
+    }
+    
+    private func fetchWeather(byCity city: String){
+        showAnimation()
+        weatherManager.fetchWeather(byCity: city) { [weak self] (result) in
+            guard let this = self else {return}
+            this.handleResult(result)
+        }
+    }
+    
+    private func handleResult(_ result: Result<WeatherModel, Error>) {
+        switch result {
+        case .success(let model):
+            updateView(with: model)
+        case .failure(let error):
+            print("error: \(error.localizedDescription)")
         }
     }
     
@@ -120,18 +134,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             manager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            weatherManager.fetchWeather(lat: lat, lon: lon) { (result) in
-                switch result {
-                case .success(let model):
-                    DispatchQueue.main.async {
-                        self.updateView(with: model)
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
+            fetchWeather(byLocation: location)
         }
     }
     
