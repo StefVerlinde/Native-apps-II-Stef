@@ -8,6 +8,7 @@
 
 import UIKit
 import SkeletonView
+import CoreLocation
 
 protocol WeatherViewControllerDelegate: class {
     func didUpdateWeatherFromSearch(model: WeatherModel)
@@ -20,12 +21,17 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var condLabel: UILabel!
     
     private let weatherManager = WeatherManager()
+    //lazy for lazy loading. When the app is initialized, this attribute is not until it is called
+    private lazy var locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.delegate = self
+        return manager
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showAnimation()
         fetchWeather()
-        //weatherManager.fetchWeather(byCity: "Gent")
     }
     
     private func fetchWeather(){
@@ -75,6 +81,27 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func locationButtonTapped(_ sender: Any) {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+        default:
+            promtForLocationPermission()
+        }
+    }
+    
+    private func promtForLocationPermission() {
+        let alertController = UIAlertController(title: "Requires Location Permission", message: "Would you like to enable location permission in settings?", preferredStyle: .alert)
+        let enableAction = UIAlertAction(title: "Go to settings", style: .default) { _ in
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {return}
+            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(enableAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -85,5 +112,21 @@ extension WeatherViewController: WeatherViewControllerDelegate {
             print("\(model.countryName)")
             this.updateView(with: model)
         })
+    }
+}
+
+extension WeatherViewController: CLLocationManagerDelegate {
+     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            manager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lng = location.coordinate.longitude
+            print(lat, lng)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
     }
 }
