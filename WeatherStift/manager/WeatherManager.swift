@@ -30,12 +30,24 @@ enum WeatherError: Error, LocalizedError {
 struct WeatherManager {
     private let API_KEY = "c4f697e578e4a5fc72b84ce28b92d66e"
     
+    func fetchWeather(lat: Double, lon: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+        //When searching for text, u have to encode it. For example: city with a space have to be handled
+        let path = "https://api.openweathermap.org/data/2.5/weather?appid=%@&units=metric&lat=%f&lon=%f"
+        let urlString = String(format: path, API_KEY, lat, lon)
+        
+        handleRequest(urlString: urlString, completion: completion)
+    }
+    
     func fetchWeather(byCity city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         //When searching for text, u have to encode it. For example: city with a space have to be handled
         let query = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? city
         let path = "https://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@&units=metric"
         let urlString = String(format: path, query, API_KEY)
         
+        handleRequest(urlString: urlString, completion: completion)
+    }
+    
+    private func handleRequest(urlString: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         //Validate is so we can use error.responseCode and not response.response?.statusCode
         AF.request(urlString).validate().responseDecodable(of: WeatherData.self, queue: .main, decoder: JSONDecoder()) { (response) in
             switch response.result {

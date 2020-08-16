@@ -121,8 +121,17 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if let location = locations.last {
             manager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
-            let lng = location.coordinate.longitude
-            print(lat, lng)
+            let lon = location.coordinate.longitude
+            weatherManager.fetchWeather(lat: lat, lon: lon) { (result) in
+                switch result {
+                case .success(let model):
+                    DispatchQueue.main.async {
+                        self.updateView(with: model)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     
