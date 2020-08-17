@@ -7,5 +7,5 @@ target 'WeatherStift' do
 
   pod 'Alamofire'
   pod 'SkeletonView'
-
+  pod 'Loaf'
 end

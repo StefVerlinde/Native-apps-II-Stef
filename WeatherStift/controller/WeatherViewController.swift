@@ -9,6 +9,7 @@
 import UIKit
 import SkeletonView
 import CoreLocation
+import Loaf
 
 protocol WeatherViewControllerDelegate: class {
     func didUpdateWeatherFromSearch(model: WeatherModel)
@@ -30,7 +31,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWeather(byCity: "Gent")
+        fetchWeather(byCity: "xxxxxz")
     }
     
     private func fetchWeather(byLocation location: CLLocation) {
@@ -56,7 +57,12 @@ class WeatherViewController: UIViewController {
         case .success(let model):
             updateView(with: model)
         case .failure(let error):
-            print("error: \(error.localizedDescription)")
+            hideAnimation()
+            conditionImageView.image = UIImage(named: "imSad")
+            navigationItem.title = ""
+            tempLabel.text = "Oops!"
+            condLabel.text = "Something went wrong. Please try again!"
+            Loaf(error.localizedDescription , state: .error, location: .top, sender: self).show()
         }
     }
     
