@@ -21,7 +21,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var condLabel: UILabel!
     
+    private let defaultCity = "Gent "
+    
     private let weatherManager = WeatherManager()
+    private let cacheManager = CacheManager()
     //lazy for lazy loading. When the app is initialized, this attribute is not until it is called
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -31,7 +34,10 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWeather(byCity: "Gent")
+        
+        let city = cacheManager.getCachedCity() ?? defaultCity
+        
+        fetchWeather(byCity: city)
     }
     
     private func fetchWeather(byLocation location: CLLocation) {
