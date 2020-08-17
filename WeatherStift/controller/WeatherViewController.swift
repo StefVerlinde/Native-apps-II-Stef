@@ -31,7 +31,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWeather(byCity: "xxxxxz")
+        fetchWeather(byCity: "Gent")
     }
     
     private func fetchWeather(byLocation location: CLLocation) {
@@ -57,13 +57,17 @@ class WeatherViewController: UIViewController {
         case .success(let model):
             updateView(with: model)
         case .failure(let error):
-            hideAnimation()
-            conditionImageView.image = UIImage(named: "imSad")
-            navigationItem.title = ""
-            tempLabel.text = "Oops!"
-            condLabel.text = "Something went wrong. Please try again!"
-            Loaf(error.localizedDescription , state: .error, location: .top, sender: self).show()
+            handleError(error)
         }
+    }
+    
+    private func handleError(_ error: Error) {
+        hideAnimation()
+        conditionImageView.image = UIImage(named: "imSad")
+        navigationItem.title = ""
+        tempLabel.text = "Oops!"
+        condLabel.text = "Something went wrong. Please try again!"
+        Loaf(error.localizedDescription , state: .error, location: .bottom, sender: self).show()
     }
     
     private func updateView(with model: WeatherModel){
@@ -145,6 +149,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+        handleError(error)
     }
 }
