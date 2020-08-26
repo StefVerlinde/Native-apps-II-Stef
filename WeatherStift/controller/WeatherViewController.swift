@@ -20,8 +20,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var condLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var cloudsLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
     
-    private let defaultCity = "Gent "
+    private let defaultCity = "Gent"
     
     private let weatherManager = WeatherManager()
     private let cacheManager = CacheManager()
@@ -81,10 +85,14 @@ class WeatherViewController: UIViewController {
         
         tempLabel.text = model.temp.toString().appending("°C")
         condLabel.text = model.conditionDescription
+        windLabel.text = model.wind.toString().appending("M/S")
+        cloudsLabel.text = model.clouds.toString().appending("%")
+        sunriseLabel.text = model.sunrise
+        sunsetLabel.text = model.sunset
         navigationItem.title = model.countryName
         conditionImageView.image = UIImage(named: model.conditionImage)
     }
-    
+
     private func hideAnimation(){
         conditionImageView.hideSkeleton()
         tempLabel.hideSkeleton()

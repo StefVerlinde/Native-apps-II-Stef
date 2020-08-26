@@ -15,17 +15,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-zf-6aB">
-                                <rect key="frame" x="107" y="296" width="200" height="304"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-zf-6aB" userLabel="StackViewWeather">
+                                <rect key="frame" x="107" y="246" width="200" height="304"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imClear" translatesAutoresizingMaskIntoConstraints="NO" id="qak-rX-TEk">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="i4l-NS-mB6"/>
                                             <constraint firstAttribute="width" secondItem="qak-rX-TEk" secondAttribute="height" multiplier="1:1" id="qI5-zo-Pmo"/>
+                                            <constraint firstAttribute="width" constant="100" id="wTf-DY-W9J"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="i4l-NS-mB6"/>
+                                                <exclude reference="wTf-DY-W9J"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="i4l-NS-mB6"/>
+                                                <exclude reference="qI5-zo-Pmo"/>
+                                                <include reference="wTf-DY-W9J"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7db-iB-JQX">
                                         <rect key="frame" x="0.0" y="216" width="200" height="36"/>
@@ -47,16 +62,198 @@
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FTC-1S-dEn"/>
                                     <constraint firstAttribute="width" constant="200" id="dSi-ue-9xc"/>
+                                    <constraint firstAttribute="height" constant="200" id="gIQ-vL-fto"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FTC-1S-dEn"/>
+                                        <exclude reference="gIQ-vL-fto"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact" spacing="1">
+                                    <mask key="constraints">
+                                        <include reference="FTC-1S-dEn"/>
+                                        <exclude reference="dSi-ue-9xc"/>
+                                        <include reference="gIQ-vL-fto"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HWc-BG-C80" userLabel="StackViewExtra">
+                                <rect key="frame" x="107" y="625.5" width="200" height="85"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="op5-9U-SWl">
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-Ik-kbK">
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcE-NT-36o" userLabel="Wind Label">
+                                                <rect key="frame" x="0.0" y="52" width="47" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ALB-Au-iEI">
+                                        <rect key="frame" x="140" y="0.0" width="60" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxe-zh-VnX">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAJ-qU-PTw" userLabel="Clouds Label">
+                                                <rect key="frame" x="0.0" y="52" width="60" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1f5-eH-YG1"/>
+                                    <constraint firstAttribute="width" constant="200" id="J9X-fC-4vN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="J9X-fC-4vN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="1f5-eH-YG1"/>
+                                        <include reference="J9X-fC-4vN"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkS-ew-2zT" userLabel="StackViewExtra2">
+                                <rect key="frame" x="107" y="755.5" width="200" height="85"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-OU-Bk1">
+                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sunrise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6al-Er-I9B">
+                                                <rect key="frame" x="0.0" y="0.0" width="140.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFE-9P-MXM" userLabel="Sunrise Label">
+                                                <rect key="frame" x="0.0" y="52" width="140.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-Ha-HyL">
+                                        <rect key="frame" x="140.5" y="0.0" width="59.5" height="85"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bek-N0-yh4">
+                                                <rect key="frame" x="0.0" y="0.0" width="59.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6j-Me-2rL" userLabel="Sunset Label">
+                                                <rect key="frame" x="0.0" y="52" width="59.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FYi-yt-4CK"/>
+                                    <constraint firstAttribute="width" constant="200" id="cpJ-Rp-6PW"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cpJ-Rp-6PW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="FYi-yt-4CK"/>
+                                        <include reference="cpJ-Rp-6PW"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="86H-WG-Njq"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BDw-rs-tSe"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="DzG-wa-2Ot"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="120" id="ObQ-2N-Dv3"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="350" id="QPp-tK-Xir"/>
+                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="TFy-k0-phX"/>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aXG-aW-2Tf"/>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-120" id="drF-q6-vPQ"/>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="leE-lF-gqv"/>
                             <constraint firstItem="aGi-zf-6aB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mri-sU-iO5"/>
+                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="tL1-L5-5mE"/>
+                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ump-IG-1RU"/>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="220" id="xff-n4-bPo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TFy-k0-phX"/>
+                                <exclude reference="ump-IG-1RU"/>
+                                <exclude reference="drF-q6-vPQ"/>
+                                <exclude reference="leE-lF-gqv"/>
+                                <exclude reference="DzG-wa-2Ot"/>
+                                <exclude reference="ObQ-2N-Dv3"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="TFy-k0-phX"/>
+                                <exclude reference="mri-sU-iO5"/>
+                                <include reference="ump-IG-1RU"/>
+                                <exclude reference="aXG-aW-2Tf"/>
+                                <include reference="drF-q6-vPQ"/>
+                                <include reference="leE-lF-gqv"/>
+                                <exclude reference="xff-n4-bPo"/>
+                                <exclude reference="BDw-rs-tSe"/>
+                                <include reference="DzG-wa-2Ot"/>
+                                <include reference="ObQ-2N-Dv3"/>
+                                <exclude reference="QPp-tK-Xir"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="tv2-lK-jKa">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="location" catalog="system" id="N4S-Ea-l9k">
@@ -71,15 +268,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cloudsLabel" destination="qAJ-qU-PTw" id="dU7-Hv-x4q"/>
                         <outlet property="condLabel" destination="vcB-gP-WQz" id="Qqh-yG-V3c"/>
                         <outlet property="conditionImageView" destination="qak-rX-TEk" id="Xus-oE-8cX"/>
+                        <outlet property="sunriseLabel" destination="fFE-9P-MXM" id="mLK-Dw-Mlp"/>
+                        <outlet property="sunsetLabel" destination="T6j-Me-2rL" id="Dlq-S3-o8w"/>
                         <outlet property="tempLabel" destination="7db-iB-JQX" id="uBG-uN-dPV"/>
+                        <outlet property="windLabel" destination="XcE-NT-36o" id="cb6-RU-eya"/>
                         <segue destination="J7H-4M-SNj" kind="presentation" identifier="showAddCity" modalPresentationStyle="overFullScreen" id="5I1-OQ-j64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="119.86607142857142"/>
+            <point key="canvasLocation" x="1041.9642857142858" y="118.84057971014494"/>
         </scene>
         <!--Add City View Controller-->
         <scene sceneID="hcc-Wb-9Tg">
