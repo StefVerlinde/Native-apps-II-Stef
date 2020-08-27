@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OcK-UC-HXz">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,95 +12,92 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherStift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-zf-6aB" userLabel="StackViewWeather">
-                                <rect key="frame" x="132" y="138" width="150" height="253.33333333333337"/>
+                                <rect key="frame" x="87.666666666666686" y="154.33333333333334" width="200" height="303.33333333333326"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imClear" translatesAutoresizingMaskIntoConstraints="NO" id="qak-rX-TEk">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="hMe-43-DF6"/>
-                                            <constraint firstAttribute="height" constant="100" id="i4l-NS-mB6"/>
-                                            <constraint firstAttribute="width" secondItem="qak-rX-TEk" secondAttribute="height" multiplier="1:1" id="qI5-zo-Pmo"/>
-                                            <constraint firstAttribute="width" constant="100" id="wTf-DY-W9J"/>
+                                            <constraint firstAttribute="width" secondItem="qak-rX-TEk" secondAttribute="height" multiplier="1:1" id="VvR-u4-THn"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="hMe-43-DF6"/>
-                                                <exclude reference="i4l-NS-mB6"/>
-                                                <exclude reference="wTf-DY-W9J"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="i4l-NS-mB6"/>
-                                                <exclude reference="qI5-zo-Pmo"/>
-                                                <include reference="wTf-DY-W9J"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular">
-                                            <mask key="constraints">
-                                                <include reference="hMe-43-DF6"/>
-                                            </mask>
-                                        </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7db-iB-JQX">
-                                        <rect key="frame" x="0.0" y="166" width="150" height="35.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="215.99999999999997" width="200" height="35.666666666666657"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="26"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="50"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zonneke" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcB-gP-WQz">
-                                        <rect key="frame" x="0.0" y="217.66666666666669" width="150" height="35.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="267.66666666666663" width="200" height="35.666666666666686"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="50"/>
+                                        </variation>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="wbr-JX-JF8">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="400"/>
+                                    </constraint>
+                                </constraints>
                                 <variation key="heightClass=compact" spacing="1"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HWc-BG-C80" userLabel="StackViewExtra">
-                                <rect key="frame" x="97" y="461.33333333333331" width="220" height="84.999999999999943"/>
+                                <rect key="frame" x="87.666666666666686" y="507.66666666666674" width="200" height="85"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="op5-9U-SWl">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-Ik-kbK">
-                                                <rect key="frame" x="26.666666666666668" y="0.0" width="46.666666666666657" height="33"/>
+                                                <rect key="frame" x="26.666666666666657" y="0.0" width="46.666666666666657" height="33"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcE-NT-36o" userLabel="Wind Label">
-                                                <rect key="frame" x="26.666666666666668" y="52.000000000000057" width="46.666666666666657" height="33"/>
+                                                <rect key="frame" x="26.666666666666657" y="51.999999999999943" width="46.666666666666657" height="33"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Ni5-fn-XgR"/>
+                                            <constraint firstAttribute="width" constant="100" id="Ni5-fn-XgR">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                            </constraint>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ALB-Au-iEI">
-                                        <rect key="frame" x="120" y="0.0" width="100" height="85"/>
+                                        <rect key="frame" x="100" y="0.0" width="100" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clouds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxe-zh-VnX">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="33"/>
@@ -110,28 +107,38 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAJ-qU-PTw" userLabel="Clouds Label">
-                                                <rect key="frame" x="0.0" y="52.000000000000057" width="100" height="33"/>
+                                                <rect key="frame" x="0.0" y="51.999999999999943" width="100" height="33"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="uNJ-i6-FTy"/>
+                                            <constraint firstAttribute="width" constant="100" id="uNJ-i6-FTy">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                            </constraint>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="kDB-R0-Jad"/>
+                                    <constraint firstAttribute="width" constant="200" id="gQu-9x-KYk">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="400"/>
+                                    </constraint>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="bkS-ew-2zT" userLabel="StackViewExtra2">
-                                <rect key="frame" x="97" y="596.33333333333337" width="220" height="85"/>
+                                <rect key="frame" x="87.666666666666686" y="632.66666666666663" width="200" height="85"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-OU-Bk1">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="85"/>
@@ -144,6 +151,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFE-9P-MXM" userLabel="Sunrise Label">
                                                 <rect key="frame" x="0.0" y="52" width="100" height="33"/>
@@ -153,14 +163,19 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="eU6-Dp-8m0"/>
+                                            <constraint firstAttribute="width" constant="100" id="eU6-Dp-8m0">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                            </constraint>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-Ha-HyL">
-                                        <rect key="frame" x="120" y="0.0" width="100" height="85"/>
+                                        <rect key="frame" x="100" y="0.0" width="100" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bek-N0-yh4">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="33"/>
@@ -170,6 +185,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6j-Me-2rL" userLabel="Sunset Label">
                                                 <rect key="frame" x="0.0" y="52" width="100" height="33"/>
@@ -179,53 +197,35 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="40"/>
+                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="y8P-mD-857"/>
+                                            <constraint firstAttribute="width" constant="100" id="y8P-mD-857">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                            </constraint>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="f36-6X-sjU"/>
+                                    <constraint firstAttribute="width" constant="200" id="MW4-q4-vgF">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="400"/>
+                                    </constraint>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8YZ-tg-APV">
-                                <variation key="heightClass=compact" constant="-150"/>
-                            </constraint>
-                            <constraint firstItem="bkS-ew-2zT" firstAttribute="top" secondItem="HWc-BG-C80" secondAttribute="bottom" constant="50" id="FS6-Mn-nCV"/>
-                            <constraint firstItem="HWc-BG-C80" firstAttribute="top" secondItem="aGi-zf-6aB" secondAttribute="bottom" constant="70" id="Oyo-Km-A9H">
-                                <variation key="heightClass=compact" constant="30"/>
-                            </constraint>
-                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QOt-gJ-fMn">
-                                <variation key="heightClass=compact" constant="150"/>
-                            </constraint>
-                            <constraint firstItem="bkS-ew-2zT" firstAttribute="top" secondItem="HWc-BG-C80" secondAttribute="bottom" constant="50" id="YXh-y7-Ihr"/>
-                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c0D-0s-mw1"/>
-                            <constraint firstItem="aGi-zf-6aB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="h3z-EA-5cx">
-                                <variation key="heightClass=compact" constant="30"/>
-                            </constraint>
-                            <constraint firstItem="bkS-ew-2zT" firstAttribute="top" secondItem="aGi-zf-6aB" secondAttribute="bottom" constant="185" id="vBE-c2-ifG">
-                                <variation key="heightClass=compact" constant="30"/>
-                            </constraint>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Wf-9x-eHl"/>
+                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="9Mv-Rq-3yN"/>
+                            <constraint firstItem="aGi-zf-6aB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9OQ-2C-yGj"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9x7-Hq-coG"/>
+                            <constraint firstItem="bkS-ew-2zT" firstAttribute="top" secondItem="HWc-BG-C80" secondAttribute="bottom" constant="40" id="wjp-Lr-QtL"/>
+                            <constraint firstItem="HWc-BG-C80" firstAttribute="top" secondItem="aGi-zf-6aB" secondAttribute="bottom" constant="50" id="zmz-G2-gva"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="YXh-y7-Ihr"/>
-                                <exclude reference="vBE-c2-ifG"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <exclude reference="FS6-Mn-nCV"/>
-                                <exclude reference="YXh-y7-Ihr"/>
-                                <include reference="vBE-c2-ifG"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="tv2-lK-jKa">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="location" catalog="system" id="N4S-Ea-l9k">
@@ -259,11 +259,11 @@
             <objects>
                 <viewController id="J7H-4M-SNj" customClass="AddCityViewController" customModule="WeatherStift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r8w-f8-7Jz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5je-u6-0wh">
-                                <rect key="frame" x="67" y="192.33333333333337" width="280" height="242.66666666666663"/>
+                                <rect key="frame" x="47.666666666666629" y="163" width="280" height="242.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lwY-9C-6AY">
                                         <rect key="frame" x="24" y="24" width="232" height="194.66666666666666"/>
@@ -283,7 +283,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amv-1G-F8J">
-                                                <rect key="frame" x="0.0" y="88.666666666666657" width="232" height="40"/>
+                                                <rect key="frame" x="0.0" y="88.666666666666686" width="232" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kbJ-fg-iGy"/>
@@ -297,10 +297,10 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RMQ-dd-Sjn">
-                                                <rect key="frame" x="0.0" y="140.66666666666666" width="232" height="20"/>
+                                                <rect key="frame" x="0.0" y="140.66666666666669" width="232" height="20"/>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCI-ez-JA1">
-                                                <rect key="frame" x="0.0" y="172.66666666666666" width="232" height="22"/>
+                                                <rect key="frame" x="0.0" y="172.66666666666669" width="232" height="22"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -348,7 +348,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OcK-UC-HXz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wl1-k3-inJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

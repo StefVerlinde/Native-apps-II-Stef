@@ -97,12 +97,20 @@ class WeatherViewController: UIViewController {
         conditionImageView.hideSkeleton()
         tempLabel.hideSkeleton()
         condLabel.hideSkeleton()
+        windLabel.hideSkeleton()
+        cloudsLabel.hideSkeleton()
+        sunriseLabel.hideSkeleton()
+        sunsetLabel.hideSkeleton()
     }
     
     private func showAnimation() {
         conditionImageView.showAnimatedGradientSkeleton()
         tempLabel.showAnimatedGradientSkeleton()
         condLabel.showAnimatedGradientSkeleton()
+        windLabel.showAnimatedSkeleton()
+        cloudsLabel.showAnimatedSkeleton()
+        sunriseLabel.showAnimatedSkeleton()
+        sunsetLabel.showAnimatedSkeleton()
     }
 
 
