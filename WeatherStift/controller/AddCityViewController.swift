@@ -15,6 +15,7 @@ class AddCityViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     
     private let weatherManager = WeatherManager()
+    private let cacheManager = CacheManager()
     
     weak var delegate: WeatherViewControllerDelegate?
     
@@ -22,7 +23,6 @@ class AddCityViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupGestures()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,16 +65,30 @@ class AddCityViewController: UIViewController {
         //remove keyboard after search is pressed
         view.endEditing(true)
         activityIndicator.startAnimating()
-        weatherManager.fetchWeather(byCity: query) { [weak self] (result) in
-            guard let this = self else {return}
-            this.activityIndicator.stopAnimating()
-            switch result {
-            case .success(let model):
-                this.handleSearchSuccess(model: model)
-            case .failure(let error):
-                this.showSearchError(text: error.localizedDescription)
+        if(cacheManager.getCachedSystem() ?? true) {
+            weatherManager.fetchWeatherMetric(byCity: query) { [weak self] (result) in
+                guard let this = self else {return}
+                this.activityIndicator.stopAnimating()
+                switch result {
+                case .success(let model):
+                    this.handleSearchSuccess(model: model)
+                case .failure(let error):
+                    this.showSearchError(text: error.localizedDescription)
+                }
+            }
+        } else {
+            weatherManager.fetchWeatherImperial(byCity: query) { [weak self] (result) in
+                guard let this = self else {return}
+                this.activityIndicator.stopAnimating()
+                switch result {
+                case .success(let model):
+                    this.handleSearchSuccess(model: model)
+                case .failure(let error):
+                    this.showSearchError(text: error.localizedDescription)
+                }
             }
         }
+        
     }
     
     private func handleSearchSuccess(model: WeatherModel) {

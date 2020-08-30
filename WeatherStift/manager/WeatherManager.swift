@@ -31,7 +31,7 @@ struct WeatherManager {
     private let API_KEY = "c4f697e578e4a5fc72b84ce28b92d66e"
     private let cacheManager = CacheManager()
     
-    func fetchWeather(lat: Double, lon: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+    func fetchWeatherMetric(lat: Double, lon: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         //When searching for text, u have to encode it. For example: city with a space have to be handled
         let path = "https://api.openweathermap.org/data/2.5/weather?appid=%@&units=metric&lat=%f&lon=%f"
         let urlString = String(format: path, API_KEY, lat, lon)
@@ -39,7 +39,7 @@ struct WeatherManager {
         handleRequest(urlString: urlString, completion: completion)
     }
     
-    func fetchWeather(byCity city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+    func fetchWeatherMetric(byCity city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         //When searching for text, u have to encode it. For example: city with a space have to be handled
         let query = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? city
         let path = "https://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@&units=metric"
@@ -47,6 +47,24 @@ struct WeatherManager {
         
         handleRequest(urlString: urlString, completion: completion)
     }
+    
+    func fetchWeatherImperial(lat: Double, lon: Double, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+        //When searching for text, u have to encode it. For example: city with a space have to be handled
+        let path = "https://api.openweathermap.org/data/2.5/weather?appid=%@&lat=%f&lon=%f"
+        let urlString = String(format: path, API_KEY, lat, lon)
+        
+        handleRequest(urlString: urlString, completion: completion)
+    }
+    
+    func fetchWeatherImperial(byCity city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+        //When searching for text, u have to encode it. For example: city with a space have to be handled
+        let query = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? city
+        let path = "https://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@"
+        let urlString = String(format: path, query, API_KEY)
+        
+        handleRequest(urlString: urlString, completion: completion)
+    }
+    
     
     private func handleRequest(urlString: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         //Validate is so we can use error.responseCode and not response.response?.statusCode

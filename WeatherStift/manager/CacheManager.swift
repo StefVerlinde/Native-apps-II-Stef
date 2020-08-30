@@ -14,6 +14,7 @@ struct CacheManager {
     
     enum Key: String {
         case city
+        case system
     }
     
     func cacheCity(cityName: String) {
@@ -24,4 +25,11 @@ struct CacheManager {
         return vault.value(forKey: Key.city.rawValue) as? String
     }
     
+    func cacheSystem(value: Bool) {
+        vault.set(value, forKey: Key.system.rawValue)
+    }
+    
+    func getCachedSystem() -> Bool? {
+        return vault.value(forKey: Key.system.rawValue) as? Bool
+    }
 }

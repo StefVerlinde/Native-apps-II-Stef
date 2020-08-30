@@ -13,6 +13,7 @@
 		0055796E24E2B418006378B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0055796C24E2B418006378B5 /* Main.storyboard */; };
 		0055797024E2B41D006378B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0055796F24E2B41D006378B5 /* Assets.xcassets */; };
 		0055797324E2B41D006378B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0055797124E2B41D006378B5 /* LaunchScreen.storyboard */; };
+		0091F11E24FC424C00C6715C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091F11D24FC424C00C6715C /* SettingsViewController.swift */; };
 		009C2EE724E6CC34006FB17D /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C2EE624E6CC33006FB17D /* Int+Extension.swift */; };
 		009C2EE924E827C2006FB17D /* WeatherDataFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C2EE824E827C2006FB17D /* WeatherDataFailure.swift */; };
 		009C2EEB24EAD613006FB17D /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C2EEA24EAD613006FB17D /* CacheManager.swift */; };
@@ -32,6 +33,7 @@
 		0055796F24E2B41D006378B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0055797224E2B41D006378B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0055797424E2B41D006378B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0091F11D24FC424C00C6715C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		009C2EE624E6CC33006FB17D /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		009C2EE824E827C2006FB17D /* WeatherDataFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataFailure.swift; sourceTree = "<group>"; };
 		009C2EEA24EAD613006FB17D /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				0055796A24E2B418006378B5 /* WeatherViewController.swift */,
 				00C59DB724E4343B00406347 /* AddCityViewController.swift */,
+				0091F11D24FC424C00C6715C /* SettingsViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				0055796B24E2B418006378B5 /* WeatherViewController.swift in Sources */,
 				00C59DB824E4343B00406347 /* AddCityViewController.swift in Sources */,
+				0091F11E24FC424C00C6715C /* SettingsViewController.swift in Sources */,
 				009C2EE924E827C2006FB17D /* WeatherDataFailure.swift in Sources */,
 				0055796724E2B418006378B5 /* AppDelegate.swift in Sources */,
 				009C2EE724E6CC34006FB17D /* Int+Extension.swift in Sources */,

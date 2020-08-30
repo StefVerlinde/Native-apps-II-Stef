@@ -238,7 +238,7 @@
                                 </variation>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bkS-ew-2zT" firstAttribute="top" secondItem="aGi-zf-6aB" secondAttribute="bottom" constant="50" id="0pm-Kf-ZBp"/>
                             <constraint firstItem="HWc-BG-C80" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Wf-9x-eHl">
@@ -285,11 +285,19 @@
                                 <action selector="locationButtonTapped:" destination="BYZ-38-t0r" id="ZAZ-Tg-bVR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ar7-LP-T4w">
-                            <connections>
-                                <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" id="OIp-zf-Xcl"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Ar7-LP-T4w">
+                                <connections>
+                                    <action selector="addCityButtonTapped:" destination="BYZ-38-t0r" id="OIp-zf-Xcl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="gear" catalog="system" id="tlY-A6-TzV">
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" id="b2h-IF-Buh"/>
+                                    <segue destination="KDa-qX-WUm" kind="presentation" identifier="showSettings" id="72D-uJ-gah"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="cloudsLabel" destination="qAJ-qU-PTw" id="dU7-Hv-x4q"/>
@@ -305,6 +313,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041.9642857142858" y="118.84057971014494"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="cnR-ek-sjW">
+            <objects>
+                <viewController id="KDa-qX-WUm" customClass="SettingsViewController" customModule="WeatherStift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vqo-RJ-Mdp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fTM-XN-guP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="sqG-b0-erC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sqG-b0-erC" id="giC-fk-1OF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fTM-XN-guP" firstAttribute="top" secondItem="txb-u9-xW4" secondAttribute="top" id="QKB-fH-3kh"/>
+                            <constraint firstItem="txb-u9-xW4" firstAttribute="trailing" secondItem="fTM-XN-guP" secondAttribute="trailing" id="fKg-0E-z0y"/>
+                            <constraint firstItem="fTM-XN-guP" firstAttribute="leading" secondItem="txb-u9-xW4" secondAttribute="leading" id="fd6-TD-ns6"/>
+                            <constraint firstItem="txb-u9-xW4" firstAttribute="bottom" secondItem="fTM-XN-guP" secondAttribute="bottom" id="xhr-YC-HKy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="txb-u9-xW4"/>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="fTM-XN-guP" id="bUi-Ex-Cc1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zdD-qG-vlV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="859"/>
         </scene>
         <!--Add City View Controller-->
         <scene sceneID="hcc-Wb-9Tg">
@@ -414,6 +462,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="imClear" width="512" height="512"/>
         <image name="location" catalog="system" width="128" height="115"/>
     </resources>

@@ -38,29 +38,52 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let city = cacheManager.getCachedCity() ?? defaultCity
         
-        fetchWeather(byCity: city)
+        if(cacheManager.getCachedSystem() ?? true) {
+            fetchWeatherMetric(byCity: city)
+        } else {
+            fetchWeatherImperial(byCity: city)
+        }
+        
     }
     
-    private func fetchWeather(byLocation location: CLLocation) {
+    private func fetchWeatherMetric(byLocation location: CLLocation) {
         showAnimation()
         let lat = location.coordinate.latitude
         let lon = location.coordinate.longitude
-        weatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] (result) in
+        weatherManager.fetchWeatherMetric(lat: lat, lon: lon) { [weak self] (result) in
             guard let this = self else {return}
             this.handleResult(result)
         }
     }
     
-    private func fetchWeather(byCity city: String){
+    private func fetchWeatherMetric(byCity city: String){
         showAnimation()
-        weatherManager.fetchWeather(byCity: city) { [weak self] (result) in
+        weatherManager.fetchWeatherMetric(byCity: city) { [weak self] (result) in
             guard let this = self else {return}
             this.handleResult(result)
         }
     }
+    
+    private func fetchWeatherImperial(byLocation location: CLLocation) {
+        showAnimation()
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        weatherManager.fetchWeatherImperial(lat: lat, lon: lon) { [weak self] (result) in
+            guard let this = self else {return}
+            this.handleResult(result)
+        }
+    }
+    
+    private func fetchWeatherImperial(byCity city: String){
+        showAnimation()
+        weatherManager.fetchWeatherImperial(byCity: city) { [weak self] (result) in
+            guard let this = self else {return}
+            this.handleResult(result)
+        }
+    }
+
     
     private func handleResult(_ result: Result<WeatherModel, Error>) {
         switch result {
@@ -80,10 +103,14 @@ class WeatherViewController: UIViewController {
         Loaf(error.localizedDescription , state: .error, location: .bottom, sender: self).show()
     }
     
-    private func updateView(with model: WeatherModel){
+    func updateView(with model: WeatherModel){
         hideAnimation()
         
-        tempLabel.text = model.temp.toString().appending("°C")
+        if(cacheManager.getCachedSystem() ?? true){
+            tempLabel.text = model.temp.toString().appending("°C")
+        } else {
+            tempLabel.text = model.temp.toString().appending("°F")
+        }
         condLabel.text = model.conditionDescription
         windLabel.text = model.wind.toString().appending("M/S")
         cloudsLabel.text = model.clouds.toString().appending("%")
@@ -118,9 +145,19 @@ class WeatherViewController: UIViewController {
         performSegue(withIdentifier: "showAddCity", sender: nil)
     }
     
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "showSettings", sender: nil)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAddCity" {
             if let destination = segue.destination as? AddCityViewController {
+                destination.delegate = self
+            }
+        }
+        if segue.identifier == "showSettings" {
+            if let destination = segue.destination as? SettingsViewController {
                 destination.delegate = self
             }
         }
@@ -137,6 +174,7 @@ class WeatherViewController: UIViewController {
             promtForLocationPermission()
         }
     }
+    
     
     private func promtForLocationPermission() {
         let alertController = UIAlertController(title: "Requires Location Permission", message: "Would you like to enable location permission in settings?", preferredStyle: .alert)
@@ -166,7 +204,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             manager.stopUpdatingLocation()
-            fetchWeather(byLocation: location)
+            if(cacheManager.getCachedSystem() ?? true) {
+                fetchWeatherMetric(byLocation: location)
+            } else {
+                fetchWeatherImperial(byLocation: location)
+            }
         }
     }
     
